@@ -41,8 +41,8 @@ pipeline {
 
                 withSonarQubeEnv('SonarServer') {
                    sh '''$SCANNER_HOME/bin/sonar-scanner \
-                       -Dsonar.projectKey=myPETC \
-                       -Dsonar.projectName=mypetclinc \
+                       -Dsonar.projectKey=myNPMapp \
+                       -Dsonar.projectName=myNPMapp \
                        -Dsonar.sources=. \
                        -Dsonar.java.binaries=target/classes \
                        -Dsonar.exclusions=src/test/java/****/*.java \
