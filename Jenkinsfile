@@ -6,3 +6,5 @@ pipeline {
                 sh 'apt-get update && apt-get install npm -y'
             }
         }
+    }
+}
