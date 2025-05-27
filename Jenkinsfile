@@ -17,5 +17,21 @@ pipeline {
                 sh 'npm install --save-dev jest-junit'
             }
         }
+         stage('Build') {
+            steps {
+                sh 'npm run build'
+            }
+        }
+        stage('Run Tests') {
+            steps {
+                sh 'npm test -- --ci --reporters=default --reporters=jest-junit'
+            }
+        }
+
+        stage('Publish Test Results') {
+            steps {
+                junit 'junit.xml'
+            }
+        }
     }
 }
