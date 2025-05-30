@@ -63,25 +63,5 @@ pipeline {
           }
         }
       }
-       stage('Package Artifact') {
-            steps {
-                script {
-                    // Create zip of the whole project directory or build folder
-                    sh 'zip -r my-node-app.zip .'
-                }
-                // Archive the zip as a Jenkins artifact (optional)
-                archiveArtifacts artifacts: 'my-node-app.zip', fingerprint: true
-            }
-        }
-        stage('Upload to Nexus') {
-            steps {
-                script {
-                    // Upload zip to Nexus repository via curl
-                    sh """
-                        curl -u ${NEXUS_CREDENTIALS_USR}:${NEXUS_CREDENTIALS_PSW} --upload-file my-node-app.zip ${NEXUS_URL}/repository/${NEXUS_REPO}/my-node-app.zip
-                    """
-                }
-            }
-        } 
     }
 }
