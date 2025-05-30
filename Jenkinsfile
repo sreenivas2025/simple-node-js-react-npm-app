@@ -56,11 +56,6 @@ pipeline {
             timeout(time:5,unit:'MINUTES'){
                 waitForQualityGate abortPipeline: true
             }
-            environment {
-        NEXUS_URL = 'http://nexus:8081'
-        NEXUS_REPO = 'node-artifacts'
-        NEXUS_CREDENTIALS = credentials('nexus-creds') // Jenkins credentials (Username/Password)
-          }
         }
       }
     }
